@@ -73,51 +73,35 @@ GROUP BY `stanza_id`;
 
 SELECT COUNT(id), HOUR(created_at)
 FROM `prenotazioni`
-GROUP BY HOUR(created_at);
+GROUP BY HOUR(created_at)
+ORDER BY COUNT(id) DESC;
 
 |num|hour
-|1  |1
-|2  |2
 |4  |3
-|1  |5
-|1  |6
-|3  |7
-|1  |8
-|1  |10
-|3  |11
-|2  |12
-|1  |13
 |4  |21
 |3  |22
 |3  |23
+|3  |7
+|3  |11
+|2  |2
+|2  |12
+|1  |8
+|1  |13
+|1  |1
+|1  |6
+|1  |10
+|1  |5
 
 
 5. Quante prenotazioni ha fatto l’ospite che ha fatto più prenotazioni?
 
 SELECT COUNT(prenotazione_id), `ospite_id`
 FROM `prenotazioni_has_ospiti`
-GROUP BY `ospite_id`;
+GROUP BY `ospite_id`
+ORDER BY COUNT(prenotazione_id) DESC LIMIT 1;
 
 |num|id_osp
-|1  |31
-|2  |32
-|1  |33
-|1  |35
-|1  |36
-|1  |37
-|1  |38
-|1  |40
 |3  |41
-|1  |43
-|3  |46
-|2  |47
-|1  |49
-|1  |50
-|2  |51
-|2  |54
-|2  |55
-|2  |56
-|2  |58
 
 
 
